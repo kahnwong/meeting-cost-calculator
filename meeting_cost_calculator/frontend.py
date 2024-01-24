@@ -1,5 +1,7 @@
 import streamlit as st
 
+from meeting_cost_calculator.model.meeting import MeetingInfo
+
 # ----------- HEADER ----------- #
 st.set_page_config(
     page_title="Meeting Cost Calculator",
@@ -18,17 +20,29 @@ input_col, output_col = st.columns(2)
 # ----------- INPUT ----------- #
 with input_col:
     with st.container():
+        meeting_info = MeetingInfo()
+
         attendees = st.number_input(
-            label="Number of attendees", min_value=1, step=1, value=5
+            label="Number of attendees",
+            min_value=1,
+            step=1,
+            value=meeting_info.attendees,
         )
         meeting_duration_minutes = st.number_input(
-            label="Meeting duration (minutes)", min_value=15, step=15, value=30
+            label="Meeting duration (minutes)",
+            min_value=15,
+            step=15,
+            value=meeting_info.meeting_duration_minutes,
         )
         times_per_week = st.number_input(
-            label="Times per week", min_value=1, step=1, value=1
+            label="Times per week",
+            min_value=1,
+            step=1,
+            value=meeting_info.times_per_week,
         )
         avg_salary = st.number_input(
-            label="Average attendee salary (per year)", min_value=100000
+            label="Average attendee salary (per year)",
+            min_value=meeting_info.avg_salary,
         )
 
 # ----------- OUTPUT ----------- #
