@@ -42,7 +42,9 @@ with input_col:
         )
         avg_salary = st.number_input(
             label="Average attendee salary (per year)",
-            min_value=meeting_info.avg_salary,
+            min_value=50000,
+            step=1000,
+            value=meeting_info.avg_salary,
         )
 
 # ----------- OUTPUT ----------- #
