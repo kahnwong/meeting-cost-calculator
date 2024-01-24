@@ -2,4 +2,6 @@
 
 Inspired by <https://meetings.justinjoyce.dev/>.
 
-## Screenshots
+## Screenshot
+
+![screenshot](images/screenshot.webp)

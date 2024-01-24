@@ -47,36 +47,21 @@ with input_col:
 
 # ----------- OUTPUT ----------- #
 with output_col:
-    avg_salary_per_hour = avg_salary / 12 / 174
-    cost_per_meeting = int(
-        round(
-            attendees
-            * meeting_duration_minutes
-            / 60
-            * times_per_week
-            * avg_salary_per_hour
-        )
-    )
-    cost_per_minute = int(round(cost_per_meeting / meeting_duration_minutes))
-    cost_per_year = int(
-        round(
-            attendees
-            * meeting_duration_minutes
-            / 60
-            * times_per_week
-            * avg_salary_per_hour
-            * 52
-        )
+    meeting_info = MeetingInfo(
+        attendees=attendees,
+        meeting_duration_minutes=meeting_duration_minutes,
+        times_per_week=times_per_week,
+        avg_salary=avg_salary,
     )
 
     with st.container():
-        st.header(f"${cost_per_meeting}")
+        st.header(f"${round(meeting_info.cost_per_hour)}")
         st.write("per meeting")
 
     with st.container():
-        st.header(f"${cost_per_minute}")
+        st.header(f"${round(meeting_info.cost_per_minute)}")
         st.write("per minute")
 
     with st.container():
-        st.header(f"${cost_per_year}")
+        st.header(f"${round(meeting_info.cost_per_year)}")
         st.write("per year")
