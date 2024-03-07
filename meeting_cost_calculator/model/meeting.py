@@ -32,9 +32,9 @@ class MeetingInfo(BaseModel):
     @computed_field
     @property
     def cost_per_minute(self) -> float:
-        return self.cost_per_hour / 60
+        return self.cost_per_hour / self.meeting_duration_hours / 60
 
     @computed_field
     @property
     def cost_per_year(self) -> float:
-        return self.cost_per_hour * 52
+        return self.cost_per_hour * self.times_per_week * 52.1429
